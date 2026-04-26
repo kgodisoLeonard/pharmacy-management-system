@@ -1,5 +1,5 @@
 // User roles
-export type UserRole = 'admin' | 'doctor' | 'pharmacist' | 'assistant' | 'stock_taker'
+export type UserRole = 'admin' | 'doctor' | 'pharmacist' | 'assistant' | 'stock_taker' | 'nurse'
 
 export interface User {
   id: string

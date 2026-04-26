@@ -127,6 +127,7 @@ function LoginForm() {
                 <DemoButton role="Doctor" onClick={() => { setUsername('dr.smith'); setPassword('doctor123'); }} />
                 <DemoButton role="Pharmacist" onClick={() => { setUsername('pharmacist1'); setPassword('pharma123'); }} />
                 <DemoButton role="Assistant" onClick={() => { setUsername('assistant1'); setPassword('assist123'); }} />
+                <DemoButton role="Nurse" onClick={() => { setUsername('nurse1'); setPassword('nurse123'); }} />
               </div>
             </div>
           </CardContent>

@@ -245,16 +245,18 @@ export default function PatientsPage() {
                         >
                           View
                         </Button>
-                        <Button 
-                          variant="ghost" 
-                          size="sm"
-                          onClick={() => {
-                            setSelectedPatient(patient)
-                            setIsVitalsDialogOpen(true)
-                          }}
-                        >
-                          Vitals
-                        </Button>
+                        {(user?.role === 'admin' || user?.role === 'doctor' || user?.role === 'nurse') && (
+                          <Button 
+                            variant="ghost" 
+                            size="sm"
+                            onClick={() => {
+                              setSelectedPatient(patient)
+                              setIsVitalsDialogOpen(true)
+                            }}
+                          >
+                            Vitals
+                          </Button>
+                        )}
                       </div>
                     </TableCell>
                   </TableRow>

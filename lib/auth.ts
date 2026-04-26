@@ -48,6 +48,11 @@ export const rolePermissions: Record<UserRole, string[]> = {
     'audit',
     'settings',
   ],
+  nurse: [
+    'dashboard',
+    'patients',
+    'settings',
+  ],
 }
 
 // Role display names
@@ -57,6 +62,7 @@ export const roleDisplayNames: Record<UserRole, string> = {
   pharmacist: 'Pharmacist',
   assistant: 'Pharmacy Assistant',
   stock_taker: 'Stock Taker',
+  nurse: 'Nurse',
 }
 
 export function login(username: string, password: string): { success: boolean; user?: Omit<User, 'password'>; error?: string } {

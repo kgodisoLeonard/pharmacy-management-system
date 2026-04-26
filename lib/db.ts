@@ -55,6 +55,16 @@ export const users: User[] = [
     createdAt: new Date('2024-03-01'),
     isActive: true,
   },
+  {
+    id: 'user-6',
+    username: 'nurse1',
+    password: 'nurse123',
+    fullName: 'Nurse Jane Doe',
+    role: 'nurse',
+    email: 'jane.doe@hospital.local',
+    createdAt: new Date('2024-03-15'),
+    isActive: true,
+  },
 ]
 
 export const patients: Patient[] = [

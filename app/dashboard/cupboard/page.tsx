@@ -209,30 +209,53 @@ export default function CupboardAccessPage() {
             {!isAuthenticated ? (
               <div className="space-y-6">
                 {/* Face ID Authentication */}
-                <div className="text-center space-y-4 py-8">
-                  <div className="mx-auto w-24 h-24 rounded-full bg-primary/10 flex items-center justify-center">
-                    {isAuthenticating && authMethod === 'face_id' ? (
-                      <Spinner className="w-12 h-12 text-primary" />
-                    ) : (
-                      <ScanFace className="w-12 h-12 text-primary" />
-                    )}
+                <div className="text-center space-y-6 py-4">
+                  <div className="relative mx-auto w-48 h-48 rounded-3xl bg-slate-900 overflow-hidden shadow-2xl ring-4 ring-slate-800">
+                    {/* Simulated Camera Viewfinder */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      {isAuthenticating && authMethod === 'face_id' ? (
+                        <>
+                          <div className="absolute inset-0 bg-blue-500/10 animate-pulse" />
+                          <div className="absolute top-0 left-0 w-full h-1 bg-blue-400 shadow-[0_0_15px_rgba(96,165,250,0.8)] animate-[scan_2s_linear_infinite]" />
+                          <div className="relative">
+                            <ScanFace className="w-20 h-20 text-blue-400 animate-pulse" />
+                            <div className="absolute -inset-4 border-2 border-blue-400/30 rounded-full animate-[ping_3s_linear_infinite]" />
+                          </div>
+                        </>
+                      ) : (
+                        <div className="text-slate-500 flex flex-col items-center">
+                          <ScanFace className="w-16 h-16 mb-2 opacity-20" />
+                          <p className="text-[10px] uppercase tracking-widest font-bold opacity-40">Camera Ready</p>
+                        </div>
+                      )}
+                    </div>
+                    
+                    {/* Corners */}
+                    <div className="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-blue-500/50 rounded-tl-lg" />
+                    <div className="absolute top-4 right-4 w-6 h-6 border-t-2 border-r-2 border-blue-500/50 rounded-tr-lg" />
+                    <div className="absolute bottom-4 left-4 w-6 h-6 border-b-2 border-l-2 border-blue-500/50 rounded-bl-lg" />
+                    <div className="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-blue-500/50 rounded-br-lg" />
                   </div>
+
                   <div>
-                    <h3 className="text-lg font-semibold">Face ID Authentication</h3>
-                    <p className="text-sm text-muted-foreground">
-                      Look at the camera to verify your identity
+                    <h3 className="text-xl font-bold text-slate-800">Biometric Verification</h3>
+                    <p className="text-sm text-slate-500 max-w-[280px] mx-auto mt-1">
+                      Position your face within the frame for secure cupboard access
                     </p>
                   </div>
+
                   <Button 
                     size="lg" 
-                    className="w-full max-w-xs"
+                    className={`w-full max-w-xs h-14 rounded-2xl font-bold transition-all ${
+                      isAuthenticating ? 'bg-slate-100 text-slate-400' : 'bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-500/25'
+                    }`}
                     onClick={handleFaceIdAuth}
                     disabled={isAuthenticating}
                   >
                     {isAuthenticating ? (
-                      <><Spinner className="w-4 h-4 mr-2" /> Scanning...</>
+                      <><Spinner className="w-5 h-5 mr-2" /> Authenticating...</>
                     ) : (
-                      <><ScanFace className="w-5 h-5 mr-2" /> Start Face ID Scan</>
+                      <><ShieldCheck className="w-5 h-5 mr-2" /> Verify Face ID</>
                     )}
                   </Button>
                 </div>
